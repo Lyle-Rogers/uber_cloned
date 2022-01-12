@@ -1,11 +1,44 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { Image } from 'react-native';
+
+import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
+
+import cars from '../../assets/data/cars';
 
 const HomeMap = () => {
+  const getImage = (type) => {
+    if (type === 'UberX') {
+      return require('../../assets/images/top-UberX.png');
+    }
+    if (type === 'UberXL') {
+      return require('../../assets/images/top-UberXL.png');
+    }
+    return require('../../assets/images/top-Comfort.png')
+  }
+
   return (
-    <View style={{ height: 300, backgroundColor: "#540a63", justifyContent: 'center', alignItems: 'center'}}>
-      <Text>He is a map</Text>
-    </View>
+    <MapView
+      style={{height: '100%', width: '100%'}}
+      provider={PROVIDER_GOOGLE}
+      initialRegion={{
+        latitude: 28.450627,
+        longitude: -16.263045,
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0421,
+      }}
+    >
+      {cars.map((car) => (
+        <Marker 
+          coordinate={{ latitude : car.latitude, longitude : car.longitude }}
+          key={car.id}
+        >
+          <Image 
+            style={{width: 73, height: 73, resizeMode: 'contain'}}
+            source={getImage(car.type)} 
+          />
+        </Marker>
+      ))}
+    </MapView>
   )
 }
 

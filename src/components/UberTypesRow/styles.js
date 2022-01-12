@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: 20,
+    padding: 17,
   },
   image: {
     height: 70,
@@ -19,10 +19,11 @@ const styles = StyleSheet.create({
   type: {
     fontWeight: 'bold',
     fontSize: 18,
+    color: 'black',
     marginBottom: 5,
   },
   time: {
-    color: '#5d5d5d',
+    color: 'black',
   },
   rightContainer: {
     width: 100,
@@ -33,6 +34,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 18,
     marginLeft: 6,
+    color: 'black',
   }
 })
 
