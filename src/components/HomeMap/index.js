@@ -23,8 +23,8 @@ const HomeMap = () => {
       initialRegion={{
         latitude: 28.450627,
         longitude: -16.263045,
-        latitudeDelta: 0.0922,
-        longitudeDelta: 0.0421,
+        latitudeDelta: 0.019,
+        longitudeDelta: 0.011,
       }}
     >
       {cars.map((car) => (
@@ -33,7 +33,14 @@ const HomeMap = () => {
           key={car.id}
         >
           <Image 
-            style={{width: 73, height: 73, resizeMode: 'contain'}}
+            style={{
+              width: 73, 
+              height: 73, 
+              resizeMode: 'contain',
+              transform: [{
+                rotate: `${car.heading}deg`, 
+              }]
+            }}
             source={getImage(car.type)} 
           />
         </Marker>
