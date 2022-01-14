@@ -19,7 +19,7 @@ const UberTypesRow = (props) => {
   }
 
   return (
-    <View style={styles.container} key={type.id}>
+    <View style={styles.container}>
       <Image 
         style={styles.image} 
         source={getImage()} 

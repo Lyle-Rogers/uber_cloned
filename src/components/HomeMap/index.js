@@ -23,9 +23,10 @@ const HomeMap = () => {
       initialRegion={{
         latitude: 28.450627,
         longitude: -16.263045,
-        latitudeDelta: 0.019,
+        latitudeDelta: 0.027,
         longitudeDelta: 0.011,
       }}
+      showsUserLocation={true}
     >
       {cars.map((car) => (
         <Marker 

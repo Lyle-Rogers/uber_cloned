@@ -14,7 +14,7 @@ const UberTypes = () => {
   return (
     <ScrollView style={styles.container}>
       {typesData.map(type => (
-        <UberTypesRow type={type} />
+        <UberTypesRow type={type} key={type.id} />
       ))}
 
       <Pressable onPress={confirm} style={{
