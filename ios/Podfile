@@ -17,6 +17,8 @@ target 'uber_clone' do
     :hermes_enabled => false
   )
 
+  pod 'RNReanimated', :path => '../node_modules/react-native-reanimated'
+
   target 'uber_cloneTests' do
     inherit! :complete
     # Pods for testing

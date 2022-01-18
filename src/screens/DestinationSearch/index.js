@@ -63,7 +63,7 @@ const DestinationSearch = () => {
           }}
           fetchDetails
           query={{
-            key: 'AIzaSyC0wfV37gLIwZJBUic-XbPdEs9N2iD57Lo',
+            key: 'AIzaSyBJYNsZL9YCS4TS7delIKc8X2_5mOY4W_E',
             language: 'en',
           }}
           enablePoweredByContainer={false}
@@ -90,7 +90,7 @@ const DestinationSearch = () => {
           }}
           fetchDetails
           query={{
-            key: 'AIzaSyC0wfV37gLIwZJBUic-XbPdEs9N2iD57Lo',
+            key: 'AIzaSyBJYNsZL9YCS4TS7delIKc8X2_5mOY4W_E',
             language: 'en',
           }}
           renderRow={(data) => <PlaceRow key={data.description || data.vicinity} data={data} />}
