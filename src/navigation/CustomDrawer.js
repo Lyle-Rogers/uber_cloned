@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, Pressable } from 'react-native';
 import { DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
+import { Auth } from 'aws-amplify';
 
 const CustomDrawer = (props) => {
   return (
@@ -58,6 +59,19 @@ const CustomDrawer = (props) => {
         </Pressable>
       </View>
       <DrawerItemList {...props} />
+      <Pressable
+        onPress={() => { Auth.signOut() }}
+      >
+        <Text style={{
+          padding: 5, 
+          paddingLeft: 18, 
+          paddingTop: 15, 
+          color: '#363636', 
+          fontWeight: '500'
+        }}>
+          Sign out
+        </Text>
+      </Pressable>
     </DrawerContentScrollView>
   )
 }

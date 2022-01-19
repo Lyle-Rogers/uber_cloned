@@ -34,8 +34,6 @@ const DestinationSearch = () => {
         originPlace,
         destinationPlace
       });
-    // console.log('origin', originPlace)
-    // console.log('destination', destinationPlace)
     }
   }, [originPlace, destinationPlace])
 

@@ -1,0 +1,59 @@
+type User @model {
+  id: ID!
+  username: String!
+  email: String!
+
+  orders: [Order] @connection(keyName: "byUser", fields: ["id"])
+}
+
+type Car @model {
+  id: ID!
+  type: String!
+  latitude: Float,
+  longitude: Float,
+  heading: Float,
+
+  orders: [Order] @connection(keyName: "byCar", fields: ["id"])
+}
+
+type Order @model 
+  @key(name: "byUser", fields: ["userId"]) 
+  @key(name: "byCar", fields: ["carId", "createdAt"]) {
+  id: ID!
+  createdAt: ID!
+
+  userId: ID!
+  user: User @connection(fields: ["userId"])
+
+  carId: ID!
+  car: Car @connection(fields: ["carId"])
+}
+
+@auth(rules: [{ allow: private, operations: [create, update, delete, read] }])
+
+query allCars {
+  listCars {
+    items {
+      id
+      type
+      longitude
+      latitude
+      heading
+    }
+  }
+}
+
+mutation MyMutation {
+  createCar(input: {
+    type: "UberX",
+    longitude: -16.263045,
+    latitude: 28.450627,
+    heading: 47,
+  }) {
+    id
+    type
+    longitude
+    latitude
+    heading
+  }
+}
