@@ -30,6 +30,7 @@ type Order @model
 }
 
 @auth(rules: [{ allow: private, operations: [create, update, delete, read] }])
+@auth(rules: [{ allow: owner, operations: [create, update, delete, read] }])
 
 query allCars {
   listCars {
@@ -43,6 +44,9 @@ query allCars {
   }
 }
 
+// car ID!
+// 916c2ee2-ef86-41e1-b58d-7e82f3efbd71
+
 mutation MyMutation {
   createCar(input: {
     type: "UberX",
@@ -55,5 +59,47 @@ mutation MyMutation {
     longitude
     latitude
     heading
+  }
+}
+
+mutation MyMutation {
+  createOrder(input: {
+    carId: "916c2ee2-ef86-41e1-b58d-7e82f3efbd71"
+    createdAt: "2022-01-20T04:45:53.875Z"
+    destinationLatitude: 28.460127
+    destinationLongitude: -16.269045
+    originLatitude: 28.450627
+    originLongitude: -16.263045
+    type: "Comfort"
+    userId: "f1d602c6-9bac-4dc9-88b1-75aad1a60d8e"
+  }) {
+    id
+    carId
+    createdAt
+    destinationLatitude
+    destinationLongitude
+    originLatitude
+    originLongitude
+    type
+    userId
+  }
+}
+
+query orders {
+  listOrders {
+    items {
+      id
+      createdAt
+      destinationLatitude
+			destinationLongitude
+			originLatitude
+			originLongitude
+      type
+      user {
+        id
+        email
+        createdAt
+      }
+    }
   }
 }

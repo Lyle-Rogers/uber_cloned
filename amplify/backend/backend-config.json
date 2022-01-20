@@ -60,6 +60,9 @@
               "userPoolConfig": {
                 "userPoolId": "authamplifyservicessforubercloned"
               }
+            },
+            {
+              "authenticationType": "AWS_IAM"
             }
           ]
         }

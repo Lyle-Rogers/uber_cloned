@@ -11,9 +11,14 @@ export const onCreateUser = /* GraphQL */ `
         items {
           id
           createdAt
+          type
+          originLatitude
+          originLongitude
+          destinationLatitude
+          destinationLongitude
+          userId
+          carId
           updatedAt
-          userOrdersId
-          carOrdersId
           owner
         }
         nextToken
@@ -34,9 +39,14 @@ export const onUpdateUser = /* GraphQL */ `
         items {
           id
           createdAt
+          type
+          originLatitude
+          originLongitude
+          destinationLatitude
+          destinationLongitude
+          userId
+          carId
           updatedAt
-          userOrdersId
-          carOrdersId
           owner
         }
         nextToken
@@ -57,9 +67,14 @@ export const onDeleteUser = /* GraphQL */ `
         items {
           id
           createdAt
+          type
+          originLatitude
+          originLongitude
+          destinationLatitude
+          destinationLongitude
+          userId
+          carId
           updatedAt
-          userOrdersId
-          carOrdersId
           owner
         }
         nextToken
@@ -82,9 +97,14 @@ export const onCreateCar = /* GraphQL */ `
         items {
           id
           createdAt
+          type
+          originLatitude
+          originLongitude
+          destinationLatitude
+          destinationLongitude
+          userId
+          carId
           updatedAt
-          userOrdersId
-          carOrdersId
           owner
         }
         nextToken
@@ -107,9 +127,14 @@ export const onUpdateCar = /* GraphQL */ `
         items {
           id
           createdAt
+          type
+          originLatitude
+          originLongitude
+          destinationLatitude
+          destinationLongitude
+          userId
+          carId
           updatedAt
-          userOrdersId
-          carOrdersId
           owner
         }
         nextToken
@@ -132,9 +157,14 @@ export const onDeleteCar = /* GraphQL */ `
         items {
           id
           createdAt
+          type
+          originLatitude
+          originLongitude
+          destinationLatitude
+          destinationLongitude
+          userId
+          carId
           updatedAt
-          userOrdersId
-          carOrdersId
           owner
         }
         nextToken
@@ -150,6 +180,12 @@ export const onCreateOrder = /* GraphQL */ `
     onCreateOrder(owner: $owner) {
       id
       createdAt
+      type
+      originLatitude
+      originLongitude
+      destinationLatitude
+      destinationLongitude
+      userId
       user {
         id
         username
@@ -161,6 +197,7 @@ export const onCreateOrder = /* GraphQL */ `
         updatedAt
         owner
       }
+      carId
       car {
         id
         type
@@ -175,8 +212,6 @@ export const onCreateOrder = /* GraphQL */ `
         owner
       }
       updatedAt
-      userOrdersId
-      carOrdersId
       owner
     }
   }
@@ -186,6 +221,12 @@ export const onUpdateOrder = /* GraphQL */ `
     onUpdateOrder(owner: $owner) {
       id
       createdAt
+      type
+      originLatitude
+      originLongitude
+      destinationLatitude
+      destinationLongitude
+      userId
       user {
         id
         username
@@ -197,6 +238,7 @@ export const onUpdateOrder = /* GraphQL */ `
         updatedAt
         owner
       }
+      carId
       car {
         id
         type
@@ -211,8 +253,6 @@ export const onUpdateOrder = /* GraphQL */ `
         owner
       }
       updatedAt
-      userOrdersId
-      carOrdersId
       owner
     }
   }
@@ -222,6 +262,12 @@ export const onDeleteOrder = /* GraphQL */ `
     onDeleteOrder(owner: $owner) {
       id
       createdAt
+      type
+      originLatitude
+      originLongitude
+      destinationLatitude
+      destinationLongitude
+      userId
       user {
         id
         username
@@ -233,6 +279,7 @@ export const onDeleteOrder = /* GraphQL */ `
         updatedAt
         owner
       }
+      carId
       car {
         id
         type
@@ -247,8 +294,6 @@ export const onDeleteOrder = /* GraphQL */ `
         owner
       }
       updatedAt
-      userOrdersId
-      carOrdersId
       owner
     }
   }

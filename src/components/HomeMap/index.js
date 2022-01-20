@@ -27,7 +27,7 @@ const HomeMap = () => {
             listCars
           )
         )
-        console.log(response)
+        setCars(response.data.listCars.items);
       } catch (e) {
         console.log(e);
       }

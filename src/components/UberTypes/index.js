@@ -5,19 +5,23 @@ import styles from './styles';
 
 import UberTypesRow from '../UberTypesRow';
 
-import typesData from '../../assets/data/types'
+import typesData from '../../assets/data/types';
 
-const UberTypes = () => {
-  const confirm = () => {
-    console.warn('confirmed!')
-  }
+const UberTypes = ({ typeState, onSubmit }) => {
+  const [selectedType, setSelectedType] = typeState;
+
   return (
     <ScrollView style={styles.container}>
       {typesData.map(type => (
-        <UberTypesRow type={type} key={type.id} />
+        <UberTypesRow 
+          type={type} 
+          key={type.id} 
+          isSelected={type.type === selectedType}
+          onPress={() => setSelectedType(type.type)}
+        />
       ))}
 
-      <Pressable onPress={confirm} style={{
+      <Pressable onPress={onSubmit} style={{
         backgroundColor: 'black',
         padding: 10,
         margin: 10,

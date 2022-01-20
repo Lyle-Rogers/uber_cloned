@@ -14,9 +14,14 @@ export const createUser = /* GraphQL */ `
         items {
           id
           createdAt
+          type
+          originLatitude
+          originLongitude
+          destinationLatitude
+          destinationLongitude
+          userId
+          carId
           updatedAt
-          userOrdersId
-          carOrdersId
           owner
         }
         nextToken
@@ -40,9 +45,14 @@ export const updateUser = /* GraphQL */ `
         items {
           id
           createdAt
+          type
+          originLatitude
+          originLongitude
+          destinationLatitude
+          destinationLongitude
+          userId
+          carId
           updatedAt
-          userOrdersId
-          carOrdersId
           owner
         }
         nextToken
@@ -66,9 +76,14 @@ export const deleteUser = /* GraphQL */ `
         items {
           id
           createdAt
+          type
+          originLatitude
+          originLongitude
+          destinationLatitude
+          destinationLongitude
+          userId
+          carId
           updatedAt
-          userOrdersId
-          carOrdersId
           owner
         }
         nextToken
@@ -94,9 +109,14 @@ export const createCar = /* GraphQL */ `
         items {
           id
           createdAt
+          type
+          originLatitude
+          originLongitude
+          destinationLatitude
+          destinationLongitude
+          userId
+          carId
           updatedAt
-          userOrdersId
-          carOrdersId
           owner
         }
         nextToken
@@ -122,9 +142,14 @@ export const updateCar = /* GraphQL */ `
         items {
           id
           createdAt
+          type
+          originLatitude
+          originLongitude
+          destinationLatitude
+          destinationLongitude
+          userId
+          carId
           updatedAt
-          userOrdersId
-          carOrdersId
           owner
         }
         nextToken
@@ -150,9 +175,14 @@ export const deleteCar = /* GraphQL */ `
         items {
           id
           createdAt
+          type
+          originLatitude
+          originLongitude
+          destinationLatitude
+          destinationLongitude
+          userId
+          carId
           updatedAt
-          userOrdersId
-          carOrdersId
           owner
         }
         nextToken
@@ -171,6 +201,12 @@ export const createOrder = /* GraphQL */ `
     createOrder(input: $input, condition: $condition) {
       id
       createdAt
+      type
+      originLatitude
+      originLongitude
+      destinationLatitude
+      destinationLongitude
+      userId
       user {
         id
         username
@@ -182,6 +218,7 @@ export const createOrder = /* GraphQL */ `
         updatedAt
         owner
       }
+      carId
       car {
         id
         type
@@ -196,8 +233,6 @@ export const createOrder = /* GraphQL */ `
         owner
       }
       updatedAt
-      userOrdersId
-      carOrdersId
       owner
     }
   }
@@ -210,6 +245,12 @@ export const updateOrder = /* GraphQL */ `
     updateOrder(input: $input, condition: $condition) {
       id
       createdAt
+      type
+      originLatitude
+      originLongitude
+      destinationLatitude
+      destinationLongitude
+      userId
       user {
         id
         username
@@ -221,6 +262,7 @@ export const updateOrder = /* GraphQL */ `
         updatedAt
         owner
       }
+      carId
       car {
         id
         type
@@ -235,8 +277,6 @@ export const updateOrder = /* GraphQL */ `
         owner
       }
       updatedAt
-      userOrdersId
-      carOrdersId
       owner
     }
   }
@@ -249,6 +289,12 @@ export const deleteOrder = /* GraphQL */ `
     deleteOrder(input: $input, condition: $condition) {
       id
       createdAt
+      type
+      originLatitude
+      originLongitude
+      destinationLatitude
+      destinationLongitude
+      userId
       user {
         id
         username
@@ -260,6 +306,7 @@ export const deleteOrder = /* GraphQL */ `
         updatedAt
         owner
       }
+      carId
       car {
         id
         type
@@ -274,8 +321,6 @@ export const deleteOrder = /* GraphQL */ `
         owner
       }
       updatedAt
-      userOrdersId
-      carOrdersId
       owner
     }
   }

@@ -11,9 +11,14 @@ export const getUser = /* GraphQL */ `
         items {
           id
           createdAt
+          type
+          originLatitude
+          originLongitude
+          destinationLatitude
+          destinationLongitude
+          userId
+          carId
           updatedAt
-          userOrdersId
-          carOrdersId
           owner
         }
         nextToken
@@ -58,9 +63,14 @@ export const getCar = /* GraphQL */ `
         items {
           id
           createdAt
+          type
+          originLatitude
+          originLongitude
+          destinationLatitude
+          destinationLongitude
+          userId
+          carId
           updatedAt
-          userOrdersId
-          carOrdersId
           owner
         }
         nextToken
@@ -100,6 +110,12 @@ export const getOrder = /* GraphQL */ `
     getOrder(id: $id) {
       id
       createdAt
+      type
+      originLatitude
+      originLongitude
+      destinationLatitude
+      destinationLongitude
+      userId
       user {
         id
         username
@@ -111,6 +127,7 @@ export const getOrder = /* GraphQL */ `
         updatedAt
         owner
       }
+      carId
       car {
         id
         type
@@ -125,8 +142,6 @@ export const getOrder = /* GraphQL */ `
         owner
       }
       updatedAt
-      userOrdersId
-      carOrdersId
       owner
     }
   }
@@ -141,6 +156,12 @@ export const listOrders = /* GraphQL */ `
       items {
         id
         createdAt
+        type
+        originLatitude
+        originLongitude
+        destinationLatitude
+        destinationLongitude
+        userId
         user {
           id
           username
@@ -149,6 +170,7 @@ export const listOrders = /* GraphQL */ `
           updatedAt
           owner
         }
+        carId
         car {
           id
           type
@@ -160,8 +182,6 @@ export const listOrders = /* GraphQL */ `
           owner
         }
         updatedAt
-        userOrdersId
-        carOrdersId
         owner
       }
       nextToken
