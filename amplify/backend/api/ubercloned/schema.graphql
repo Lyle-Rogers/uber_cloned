@@ -1,45 +1,55 @@
-type User @model
+type User
+  @model
   @auth(
     rules: [
-      { allow: owner, operations: [create, update, delete, read] },
-      { allow: private, operations: [create, update, delete, read] },
-      { allow: public, operations: [create, update, delete, read] }
+      {allow: owner, operations: [create, update, delete, read]}
+      {allow: private, operations: [create, update, delete, read]}
+      {allow: public, operations: [create, update, delete, read]}
     ]
   ) {
   id: ID!
   username: String!
   email: String!
-  orders: [Order] @hasMany(indexName: "byUser", fields: ["id"])
+  orders: [Order] @hasMany
+  carId: ID
+  car: Car @hasOne(fields: ["carId"])
 }
 
-type Car @model
+type Car
+  @model
   @auth(
     rules: [
-      { allow: owner, operations: [create, update, delete, read] },
-      { allow: private, operations: [create, update, delete, read] },
-      { allow: public, operations: [create, update, delete, read] }
+      {allow: owner, operations: [create, update, delete, read]}
+      {allow: private, operations: [create, update, delete, read]}
+      {allow: public, operations: [create, update, delete, read]}
     ]
   ) {
   id: ID!
   type: String!
-  latitude: Float,
-  longitude: Float,
-  heading: Float,
-  orders: [Order] @hasMany(indexName: "byCar", fields: ["id"])
+  latitude: Float
+  longitude: Float
+  heading: Float
+  isActive: Boolean
+  orders: [Order] @hasMany
+
+  userId: ID!
+  user: User @belongsTo(fields: ["userId"])
 }
 
-type Order @model
+type Order
+  @model
   @auth(
     rules: [
-      { allow: owner, operations: [create, update, delete, read] },
-      { allow: private, operations: [create, update, delete, read] },
-      { allow: public, operations: [create, update, delete, read] }
+      {allow: owner, operations: [create, update, delete, read]}
+      {allow: private, operations: [create, update, delete, read]}
+      {allow: public, operations: [create, update, delete, read]}
     ]
   ) {
   id: ID!
   createdAt: String!
 
   type: String!
+  status: String
 
   originLatitude: Float!
   originLongitude: Float!
@@ -47,9 +57,9 @@ type Order @model
   destinationLatitude: Float!
   destinationLongitude: Float!
 
-  userId: ID! @index(name: "byUser")
-  user: User @belongsTo(fields: ["userId"])
+  userId: ID!
+  user: User @belongsTo
 
-  carId: ID! @index(name: "byCar")
-  car: Car @belongsTo(fields: ["carId"])
+  carId: ID!
+  car: Car @belongsTo
 }
