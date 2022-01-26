@@ -46,6 +46,12 @@ query allCars {
 
 // car ID!
 // 916c2ee2-ef86-41e1-b58d-7e82f3efbd71
+// user ID.
+// f1d602c6-9bac-4dc9-88b1-75aad1a60d8e
+
+mutation MyMutation {
+  createCar(input: {heading: 250, id: "916c2ee2-ef86-41e1-b58d-7e82f3efbd71", isActive: true, latitude: 28.450627, longitude: -16.263045, type: "Comfort", userId: "f1d602c6-9bac-4dc9-88b1-75aad1a60d8e"})
+}
 
 mutation MyMutation {
   createCar(input: {

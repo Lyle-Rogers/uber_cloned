@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import { View, Dimensions, Alert } from 'react-native';
+import React, {useState} from 'react';
+import {View, Dimensions} from 'react-native';
 
-import { useRoute, useNavigation } from '@react-navigation/native';
-import { API, graphqlOperation, Auth } from 'aws-amplify';
+import {useRoute, useNavigation} from '@react-navigation/native';
+import {API, graphqlOperation, Auth} from 'aws-amplify';
 
-import RouteMap from "../../components/RouteMap";
-import UberTypes from "../../components/UberTypes";
+import RouteMap from '../../components/RouteMap';
+import UberTypes from '../../components/UberTypes';
 
-import { createOrder } from '../../graphql/mutations';
+import {createOrder} from '../../graphql/mutations';
 
 const SearchResults = () => {
   const typeState = useState(null);
@@ -15,7 +15,7 @@ const SearchResults = () => {
   const route = useRoute();
   const navigation = useNavigation();
 
-  const { originPlace, destinationPlace } = route.params;
+  const {originPlace, destinationPlace} = route.params;
 
   const onSubmit = async () => {
     const [type] = typeState;
@@ -37,43 +37,35 @@ const SearchResults = () => {
           destinationLongitude: destinationPlace.geometry.location.lng,
 
           userId: userInfo.attributes.sub,
-          
-          carId: "916c2ee2-ef86-41e1-b58d-7e82f3efbd71",
-        }
+
+          status: 'NEW',
+
+          carId: '916c2ee2-ef86-41e1-b58d-7e82f3efbd71',
+        };
 
         const response = await API.graphql(
-          graphqlOperation(
-            createOrder, {
-              input: input 
-            }
-          )
-        )
+          graphqlOperation(createOrder, {
+            input: input,
+          }),
+        );
 
-        console.log("work!!!!!!", response)
-        Alert.alert(
-          "It worked", 
-          "your order was a success.",
-          [{
-            text: "return back home",
-            onPress: () => navigation.navigate("Home")
-          }]
-        )
+        navigation.navigate('OrderPage', {id: response.data.createOrder.id});
       } catch (e) {
         console.error(e);
       }
     }
-  }
+  };
 
   return (
-    <View style={{ display: 'flex', justifyContent: 'space-between' }}>
+    <View style={{display: 'flex', justifyContent: 'space-between'}}>
       <View style={{height: Dimensions.get('window').height - 391}}>
-        <RouteMap origin={originPlace} destination={destinationPlace}  />
+        <RouteMap origin={originPlace} destination={destinationPlace} />
       </View>
-      <View style={{ height: 391 }}>
+      <View style={{height: 391}}>
         <UberTypes typeState={typeState} onSubmit={onSubmit} />
       </View>
     </View>
-  )
-}
+  );
+};
 
 export default SearchResults;

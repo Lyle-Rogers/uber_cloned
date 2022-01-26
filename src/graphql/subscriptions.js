@@ -1,6 +1,133 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const onOrderUpdated = /* GraphQL */ `
+  subscription OnOrderUpdated($id: ID!) {
+    onOrderUpdated(id: $id) {
+      id
+      createdAt
+      type
+      status
+      originLatitude
+      originLongitude
+      destinationLatitude
+      destinationLongitude
+      userId
+      user {
+        id
+        username
+        email
+        orders {
+          nextToken
+        }
+        carId
+        car {
+          id
+          type
+          latitude
+          longitude
+          heading
+          isActive
+          userId
+          createdAt
+          updatedAt
+          owner
+        }
+        createdAt
+        updatedAt
+        owner
+      }
+      carId
+      car {
+        id
+        type
+        latitude
+        longitude
+        heading
+        isActive
+        orders {
+          nextToken
+        }
+        userId
+        user {
+          id
+          username
+          email
+          carId
+          createdAt
+          updatedAt
+          owner
+        }
+        createdAt
+        updatedAt
+        owner
+      }
+      updatedAt
+      userOrdersId
+      carOrdersId
+      owner
+    }
+  }
+`;
+export const onCarUpdated = /* GraphQL */ `
+  subscription OnCarUpdated($id: ID!) {
+    onCarUpdated(id: $id) {
+      id
+      type
+      latitude
+      longitude
+      heading
+      isActive
+      orders {
+        items {
+          id
+          createdAt
+          type
+          status
+          originLatitude
+          originLongitude
+          destinationLatitude
+          destinationLongitude
+          userId
+          carId
+          updatedAt
+          userOrdersId
+          carOrdersId
+          owner
+        }
+        nextToken
+      }
+      userId
+      user {
+        id
+        username
+        email
+        orders {
+          nextToken
+        }
+        carId
+        car {
+          id
+          type
+          latitude
+          longitude
+          heading
+          isActive
+          userId
+          createdAt
+          updatedAt
+          owner
+        }
+        createdAt
+        updatedAt
+        owner
+      }
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
 export const onCreateUser = /* GraphQL */ `
   subscription OnCreateUser($owner: String) {
     onCreateUser(owner: $owner) {
